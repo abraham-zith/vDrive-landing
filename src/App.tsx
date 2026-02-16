@@ -1,7 +1,6 @@
-import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
 import {
-  CarTwoTone,
   UserOutlined,
   FileDoneOutlined,
   EnvironmentOutlined,
@@ -19,16 +18,31 @@ import {
   FacebookFilled,
 } from "@ant-design/icons";
 import { IoCarSportOutline } from "react-icons/io5";
+import { GrPowerReset } from "react-icons/gr";
+import { FaArrowUp } from "react-icons/fa";
+import { FaRoute } from "react-icons/fa6";
+// import { MdStarRate } from "react-icons/md";
 
 import { Button, Input, Steps } from "antd";
 import googlePlay from "./assets/images/playStoreImg.png";
 import appStore from "./assets/images/aple.png";
+import { MdAlarm } from "react-icons/md";
 
 const LandingPage = () => {
   const [current, setCurrent] = useState(0);
 
-  const isMobile = window.innerWidth <= 768;
- // const isTablet = window.innerWidth <= 1024;
+  // const isMobile = window.innerWidth <= 768;
+  // const isTablet = window.innerWidth <= 1024;
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const stepForms = [
     // STEP 1
@@ -45,7 +59,14 @@ const LandingPage = () => {
         Tell us about yourself
       </p>
 
-      <div style={{ display: "flex", gap: 20, marginBottom: 20 }}>
+      <div
+        style={{
+          display: "flex",
+          gap: 20,
+          marginBottom: 20,
+          flexDirection: isMobile ? "column" : "row",
+        }}
+      >
         <Input placeholder="Enter your full name" />
         <Input placeholder="+91 9876543210" />
       </div>
@@ -57,7 +78,7 @@ const LandingPage = () => {
         style={{
           float: "right",
           borderRadius: 24,
-          padding: "0 32px",
+          padding: isMobile ? "0 24px" : "0 32px",
         }}
         onClick={() => setCurrent(1)}
       >
@@ -81,7 +102,13 @@ const LandingPage = () => {
         Upload required documents
       </p>
 
-      <div style={{ display: "flex", gap: 20 }}>
+      <div
+        style={{
+          display: "flex",
+          gap: 20,
+          flexDirection: isMobile ? "column" : "row",
+        }}
+      >
         {["Aadhaar Card", "Driving License", "PAN Card (Optional)"].map(
           (doc) => (
             <div
@@ -98,7 +125,7 @@ const LandingPage = () => {
               ⬆️
               <p style={{ marginTop: 12, fontSize: "14px" }}>{doc}</p>
             </div>
-          )
+          ),
         )}
       </div>
 
@@ -115,7 +142,7 @@ const LandingPage = () => {
             fontSize: 13,
             height: 38,
             borderRadius: 20,
-            padding: "0 28px",
+            padding: isMobile ? "0 20px" : "0 28px",
           }}
           onClick={() => setCurrent(2)}
         >
@@ -168,9 +195,16 @@ const LandingPage = () => {
       </Button>
     </div>,
   ];
+  const rideTypes = [
+    { label: "Round Trip", icon: <GrPowerReset /> },
+    { label: "One Way", icon: <FaArrowUp /> },
+    { label: "Outstation", icon: <FaRoute /> },
+    { label: "Schedule Ride", icon: <MdAlarm /> },
+  ];
 
   return (
-    <div style={{ width: "100%", height: "100%" }}>
+    <div style={{ width: "100%", height: "100%", overflow: "hidden" }}>
+      {/* header */}
       <div
         style={{
           display: "flex",
@@ -179,11 +213,11 @@ const LandingPage = () => {
           padding: "15px",
           boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
           position: "fixed",
-          width: "98%",
-
+          width: "100%",
           background: "white",
           top: 0,
           zIndex: 1000,
+          boxSizing: "border-box",
         }}
       >
         <div
@@ -201,7 +235,7 @@ const LandingPage = () => {
 
         <div
           style={{
-            display: "flex",
+            display: isMobile ? "none" : "flex",
             gap: 24,
             fontSize: 13,
             fontWeight: 500,
@@ -264,10 +298,9 @@ const LandingPage = () => {
       <div>
         <div
           style={{
-            minHeight: "100vh",
-            padding: isMobile ? "80px 20px" : "120px 60px",
-
-            background: "radial-gradient(circle at top, #white, #white)",
+            minHeight: isMobile ? "auto" : "100vh",
+            padding: isMobile ? "80px 20px 30px" : "100px 30px",
+            background: "radial-gradient(circle at top, white, white)",
             fontFamily: "Inter, sans-serif",
           }}
         >
@@ -276,7 +309,7 @@ const LandingPage = () => {
               display: "flex",
               flexDirection: isMobile ? "column" : "row",
               alignItems: "center",
-              gap: isMobile ? "20px" : "40px",
+              gap: isMobile ? "20px" : "60px",
             }}
           >
             {/* LEFT CONTENT */}
@@ -289,14 +322,17 @@ const LandingPage = () => {
               {/* Tag */}
               <span
                 style={{
-                  backgroundColor: "#0da2e7",
-                  color: "white",
+                  background: "rgba(22, 119, 255, 0.15)", // light blue transparent
+                  color: "#1677ff", // AntD blue
                   fontWeight: "600",
                   padding: "6px 14px",
-                  borderRadius: "999px",
+                  borderRadius: "8px", // reduced radius
                   fontSize: "12px",
                   display: "inline-block",
                   marginBottom: "20px",
+                  border: "1px solid rgba(22, 119, 255, 0.35)", // glass border
+                  backdropFilter: "blur(6px)", // glass effect
+                  WebkitBackdropFilter: "blur(6px)",
                 }}
               >
                 India's #1 Verified Driver Platform
@@ -305,7 +341,7 @@ const LandingPage = () => {
               {/* Heading */}
               <h1
                 style={{
-                  fontSize: "44px",
+                  fontSize: isMobile ? "32px" : "44px",
                   fontWeight: "700",
                   lineHeight: "1.2",
                   margin: "0 0 16px 0",
@@ -344,6 +380,8 @@ const LandingPage = () => {
                   fontSize: "14px",
                   color: "#64748b",
                   marginBottom: "30px",
+                  marginLeft: isMobile ? "auto" : "0",
+                  marginRight: isMobile ? "auto" : "0",
                 }}
               >
                 Professional, background-verified drivers for your personal
@@ -352,14 +390,15 @@ const LandingPage = () => {
 
               {/* Ride Type Buttons */}
               <div
-                style={{ display: "flex", gap: "12px", marginBottom: "10px" }}
+                style={{
+                  display: "flex",
+                  gap: "12px",
+                  marginBottom: "10px",
+                  flexWrap: "wrap",
+                  justifyContent: isMobile ? "center" : "flex-start",
+                }}
               >
-                {[
-                  "🔄 Round Trip",
-                  "➡️ One Way",
-                  "🌍 Outstation",
-                  "⏰ Schedule Ride",
-                ].map((item, index) => (
+                {rideTypes.map((item, index) => (
                   <button
                     key={index}
                     onMouseEnter={(e) => {
@@ -373,26 +412,28 @@ const LandingPage = () => {
                         "0 20px 40px rgba(0,0,0,0.08)";
                     }}
                     style={{
-                      padding: "6px 10px", // 🔽 reduced padding
-                      borderRadius: "999px",
-
+                      padding: "6px 10px",
+                      borderRadius: "12px",
                       fontWeight: "600",
-                      fontSize: "12px", // 🔽 smaller text
+                      fontSize: "12px",
                       cursor: "pointer",
                       lineHeight: "1.2",
-
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "6px",
                       transition: "all 0.25s ease",
                     }}
                   >
-                    {item}
+                    {item.icon}
+                    {item.label}
                   </button>
                 ))}
               </div>
-
+              {/* Download app */}
               <div
                 style={{
                   width: "100%",
-                  padding: "40px 20px",
+                  padding: "15px 10px",
                   background: "white",
                 }}
               >
@@ -409,8 +450,10 @@ const LandingPage = () => {
                 <div
                   style={{
                     display: "flex",
-                    gap: "30px",
+                    gap: isMobile ? "15px" : "30px",
                     alignItems: "flex-start",
+                    flexDirection: isMobile ? "column" : "row",
+                    justifyContent: isMobile ? "center" : "flex-start",
                   }}
                 >
                   <div>
@@ -493,7 +536,13 @@ const LandingPage = () => {
 
               {/* Stats */}
               <div
-                style={{ display: "flex", gap: "40px", background: "white" }}
+                style={{
+                  display: "flex",
+                  gap: isMobile ? "30px" : "50px",
+                  background: "white",
+                  padding: "20px",
+                  justifyContent: isMobile ? "center" : "flex-start",
+                }}
               >
                 <div>
                   <h3 style={{ margin: 0 }}>50K+</h3>
@@ -508,7 +557,7 @@ const LandingPage = () => {
                   </p>
                 </div>
                 <div>
-                  <h3 style={{ margin: 0 }}>4.9★</h3>
+                  <h3 style={{ margin: 0 }}>4.9 ⭐</h3>
                   <p style={{ color: "#64748b", margin: 0, fontSize: "12px" }}>
                     Rating
                   </p>
@@ -516,22 +565,26 @@ const LandingPage = () => {
               </div>
             </div>
 
-            {/* RIGHT IMAGE */}
+            {/* RIGHT IMAGE - FULLY RESPONSIVE FOR ALL DEVICES */}
             <div
               style={{
-                width: "50%",
+                width: isMobile ? "100%" : "50%",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
                 position: "relative",
+                marginTop: isMobile ? "30px" : "0",
+                padding: isMobile ? "0 15px" : "0",
+                boxSizing: "border-box",
               }}
             >
               {/* Back shadow layer */}
               <div
                 style={{
                   position: "absolute",
-                  width: isMobile ? "300px" : "560px",
-                  height: isMobile ? "280px" : "380px",
+                  width: isMobile ? "calc(100% - 30px)" : "560px",
+                  maxWidth: isMobile ? "340px" : "560px",
+                  height: isMobile ? "clamp(250px, 70vw, 300px)" : "380px",
                   borderRadius: "28px",
                   background: "linear-gradient(135deg, #e0f2fe, #ede9fe)",
                   transform: "rotate(-3deg)",
@@ -542,14 +595,15 @@ const LandingPage = () => {
               {/* Main card */}
               <div
                 style={{
-                  width: isMobile ? "100%" : "560px",
-                  height: isMobile ? "260px" : "380px",
+                  width: isMobile ? "calc(100% - 30px)" : "560px",
+                  maxWidth: isMobile ? "340px" : "560px",
+                  height: isMobile ? "clamp(250px, 70vw, 300px)" : "380px",
                   borderRadius: "28px",
                   background: "linear-gradient(135deg, #fde7e9, #e0f2fe)",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  overflow: "hidden",
+                  overflow: "visible",
                   zIndex: 1,
                   boxShadow: "0 30px 60px rgba(0,0,0,0.08)",
                 }}
@@ -558,11 +612,13 @@ const LandingPage = () => {
                   src="https://ride-zenith-motion.lovable.app/assets/hero-driver-CiLvS93v.png"
                   alt="Driver"
                   style={{
-                    width: isMobile ? "50%" : "100%",
-                    height: isMobile ? "50%" : "100%",
-                    objectFit: "cover", // fills the card nicely
+                    width: "100%",
+                    height: "100%",
+                    maxWidth: "100%",
+                    maxHeight: "100%",
+                    objectFit: "contain",
                     objectPosition: "center",
-                    padding: "20px", // keeps safe spacing
+                    padding: isMobile ? "15px" : "20px",
                     animation: "float 4s ease-in-out infinite",
                   }}
                 />
@@ -587,8 +643,8 @@ const LandingPage = () => {
       <div
         id="ride-types"
         style={{
-          padding: "100px 40px",
-          background: "#white",
+          // padding: "50px 40px",
+          background: "white",
         }}
       >
         {/* Heading Section */}
@@ -765,7 +821,7 @@ const LandingPage = () => {
         style={{
           minHeight: "100vh",
           padding: "120px 40px",
-          background: "#white",
+          background: "white",
         }}
       >
         <div
@@ -795,7 +851,7 @@ const LandingPage = () => {
             justifyContent: "center",
             flexWrap: "wrap",
             padding: "60px 20px",
-            background: "#white",
+            background: "white",
           }}
         >
           {[
@@ -1006,7 +1062,7 @@ const LandingPage = () => {
         id="safety"
         style={{
           minHeight: "100vh",
-          padding: "120px 40px",
+          //padding: "120px 40px",
           background: "white",
         }}
       >
@@ -1040,8 +1096,8 @@ const LandingPage = () => {
 
         <div
           style={{
-            background: "#white",
-            padding: "80px 24px",
+            background: "white",
+            // padding: "80px 24px",
           }}
         >
           {/* TOP CARDS */}
@@ -1164,7 +1220,7 @@ const LandingPage = () => {
             style={{
               maxWidth: "900px",
               margin: "0 auto",
-              background: "#white ",
+              background: "white ",
               borderRadius: "20px",
               padding: "32px 20px",
               display: "flex",
@@ -1215,9 +1271,9 @@ const LandingPage = () => {
       <div
         id="join-driver"
         style={{
-          minHeight: "100vh",
-          padding: "100px 40px",
-          background: "#white",
+          minHeight: isMobile ? "auto" : "100vh",
+          background: "white",
+          padding: isMobile ? "80px 20px 40px" : "100px 40px",
         }}
       >
         {/* HEADER */}
@@ -1271,6 +1327,8 @@ const LandingPage = () => {
               <Steps
                 current={current}
                 onChange={(value) => setCurrent(value)}
+                responsive={false}
+                size="small"
                 items={[
                   { icon: <UserOutlined /> },
                   { icon: <FileDoneOutlined /> },
@@ -1286,12 +1344,12 @@ const LandingPage = () => {
       </div>
       <div
         style={{
-          minHeight: "100vh",
-          padding: "100px 40px",
-          background: "#white",
+          minHeight: isMobile ? "auto" : "100vh",
+          background: "white",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          padding: isMobile ? "40px 20px" : 0,
         }}
       >
         {/* MAIN WRAPPER */}
@@ -1300,8 +1358,9 @@ const LandingPage = () => {
             width: "100%",
             maxWidth: 1100,
             display: "flex",
-            gap: 80,
+            gap: isMobile ? 40 : 80,
             alignItems: "center",
+            flexDirection: isMobile ? "column" : "row",
           }}
         >
           {/* LEFT CONTENT */}
@@ -1377,7 +1436,7 @@ const LandingPage = () => {
           <div
             style={{
               flex: 1,
-              background: "#white",
+              background: "white",
               padding: 36,
               borderRadius: 20,
               boxShadow: "0 20px 40px rgba(0,0,0,0.08)",
@@ -1464,8 +1523,8 @@ const LandingPage = () => {
       </div>
       <div
         style={{
-          padding: "100px 40px",
-          background: "#white",
+          padding: "50px 40px",
+          background: "white",
           display: "flex",
           justifyContent: "center",
         }}
@@ -1476,7 +1535,7 @@ const LandingPage = () => {
             width: "100%",
             maxWidth: 1100,
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
+            gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
             gap: 32,
           }}
         >
@@ -1493,10 +1552,11 @@ const LandingPage = () => {
             style={{
               background: "#ffffff",
               borderRadius: 20,
-              padding: 36,
+              //padding: 36,
 
               transition: "all 0.3s ease",
               cursor: "pointer",
+              padding: "20px",
             }}
           >
             <div
@@ -1539,7 +1599,7 @@ const LandingPage = () => {
                 color: "#fff",
                 border: "none",
                 borderRadius: 24,
-                fontSize: 14,
+                fontSize: isMobile ? 12 : 14,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -1560,7 +1620,7 @@ const LandingPage = () => {
                 color: "#0f172a",
                 border: "1px solid #cbd5e1",
                 borderRadius: 24,
-                fontSize: 14,
+                fontSize: isMobile ? 12 : 14,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -1632,7 +1692,7 @@ const LandingPage = () => {
                 color: "#020617",
                 border: "none",
                 borderRadius: 24,
-                fontSize: 14,
+                fontSize: isMobile ? 12 : 14,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -1653,7 +1713,7 @@ const LandingPage = () => {
                 color: "#fff",
                 border: "1px solid rgba(255,255,255,0.3)",
                 borderRadius: 24,
-                fontSize: 14,
+                fontSize: isMobile ? 12 : 14,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -1781,10 +1841,10 @@ const LandingPage = () => {
 
           <div style={{ display: "flex", gap: "14px" }}>
             {[
-              <FacebookFilled />,
-              <TwitterOutlined />,
-              <InstagramOutlined />,
-              <LinkedinFilled />,
+              <FacebookFilled key="fb" />,
+              <TwitterOutlined key="tw" />,
+              <InstagramOutlined key="ig" />,
+              <LinkedinFilled key="li" />,
             ].map((icon, i) => (
               <div
                 key={i}
