@@ -1,0 +1,164 @@
+/* Trust & Safety Section Wrapper */
+.trust-safety {
+  /* padding: 6rem 0 2rem 0; */
+  padding: 2rem 0 3rem 0;
+  background-color: #ffffff;
+  background-image: none !important;
+  position: relative;
+  z-index: 10;
+}
+
+.trust-safety .container {
+  max-width: 1400px;
+  padding: 0 2rem;
+}
+
+.trust-safety-header {
+  max-width: 900px;
+  margin: 0 auto 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* .trust-safety-header .badge {
+  margin-bottom: 1rem;
+  border-radius: var(--radius-pill);
+} */
+/* Simple and clean badge style - matching your screenshot */
+
+/* Replace your .badge-blue with this */
+.trust-safety-header .badge-blue {
+  display: inline-block;
+  position: relative;
+  padding: 5px 25px;
+  color: #ffffff;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 0.95rem;
+
+  font-weight: 500;
+  text-decoration: none;
+  z-index: 1;
+  border: none;
+  background: none;
+  margin-bottom: 1.5rem;
+
+}
+
+/* Background shape for About badge */
+.trust-safety-header .badge-blue::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #0b57d0;
+  border-radius: 8px;
+  transform: perspective(60px) rotateX(18deg);
+  box-shadow: 0 0 0 3px #adc6ff;
+  z-index: -1;
+}
+
+/* Mobile responsive alignment */
+@media (max-width: 1024px) {
+  .about .badge-blue {
+    margin-left: auto;
+    margin-right: auto;
+    display: table;
+    /* Center alignment for skewed elements */
+  }
+}
+
+.trust-safety-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.trust-safety-subtitle .highlight-text {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+
+.trust-safety-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  width: 100%;
+}
+
+
+.safety-card {
+  background-color: #FFFFFF;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid #e2e8f0;
+}
+
+.safety-card:hover {
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.1);
+}
+
+.safety-card-image-wrapper {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #F8FAFC;
+  position: relative;
+  overflow: hidden;
+}
+
+.safety-card-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.safety-card-content {
+  padding: 1.25rem 1.5rem;
+  background-color: #eff6ff;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  text-align: left;
+}
+
+.safety-card-content h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #0F172A;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.safety-card-content p {
+  font-size: 0.95rem;
+  color: #475569;
+  line-height: 1.5;
+  margin: 0;
+}
+
+
+@media (max-width: 1024px) {
+  .trust-safety-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .trust-safety-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .trust-safety {
+    padding: 4rem 0;
+  }
+}

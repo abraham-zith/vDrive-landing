@@ -1,0 +1,223 @@
+.app-showcase {
+  padding: 7rem 0;
+  /* Reduced from 10rem */
+  background-color: #ffffff;
+  position: relative;
+  overflow: visible;
+}
+
+.app-showcase .container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  overflow: visible;
+}
+
+.showcase-strip-banner {
+  background: linear-gradient(to right, #1e3c72, #2a5bd7);
+  border-radius: 0;
+  /* Now Full Width */
+  position: relative;
+  /* Anchor for popping content */
+  width: 100%;
+  min-height: 380px;
+  /* Reduced from 480px */
+  display: flex;
+  align-items: center;
+  box-shadow: 0 40px 100px rgba(30, 60, 114, 0.15);
+  overflow: visible;
+  /* Let the phones out */
+}
+
+.app-showcase-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  padding: 0;
+  /* Padding now handled by .container */
+  align-items: center;
+}
+
+/* Left Content Area (Preserved) */
+.app-showcase-text {
+  color: #ffffff;
+  max-width: 550px;
+  text-align: left;
+}
+
+.app-showcase-text h2 {
+  font-size: 2.2rem;
+  line-height: 1.3;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  color: #FFFFFF;
+}
+
+.app-showcase-desc {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  padding-left: 4px;
+}
+
+/* Download Blocks */
+.app-download-grid {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-start;
+  margin-top: 1rem;
+  padding: 0;
+  padding-left: 15px;
+}
+
+.download-block-composite {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.driver-badge,
+.rider-badge {
+  height: 60px;
+  width: auto;
+}
+
+.download-label {
+  color: white;
+  font-size: 20px;
+  margin-bottom: 6px;
+  padding-left: 40px;
+  /* left alignment */
+}
+
+
+/* Right Content Area - Illustration */
+.app-showcase-illustration {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.showcase-image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  object-fit: contain;
+  filter: none !important;
+  background: transparent !important;
+}
+
+/* Right Mockups Area (The Showcase) */
+.app-showcase-mockups {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.mockup-pop-wrapper {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  position: relative;
+}
+
+.showcase-mockup {
+  width: 280px;
+  height: auto;
+  object-fit: contain;
+  filter: none;
+  transition: transform 0.3s ease;
+  margin-top: -160px;
+  /* Popping out top */
+  margin-bottom: -160px;
+  /* Popping out bottom */
+}
+
+/* Responsive Rules */
+@media (max-width: 1280px) {
+  .app-showcase-content {
+    padding: 0 2rem;
+  }
+
+  .showcase-mockup {
+    width: 260px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .app-showcase {
+    padding: 6rem 0;
+  }
+
+  .app-showcase-desc {
+    margin-bottom: 1.5rem !important;
+    font-size: 1.2rem;
+  }
+
+
+  .showcase-strip-banner {
+    min-height: auto;
+    padding: 5rem 0;
+    border-radius: 0;
+  }
+
+  .app-showcase-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 5rem;
+  }
+
+  .app-showcase-text {
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .app-download-grid {
+    justify-content: center;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    /* Add this to remove left padding */
+  }
+
+  .app-showcase-mockups {
+    justify-content: center;
+  }
+
+  .mockup-pop-wrapper {
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .showcase-mockup {
+    margin: 0;
+    width: 240px;
+  }
+
+  .download-block-composite {
+    align-items: center !important;
+    margin: 0 !important;
+    max-width: 280px;
+    /* Limit width for better appearance */
+  }
+}
+
+
+
+
+@media (max-width: 640px) {
+  .app-showcase-text h2 {
+    font-size: 2.1rem;
+  }
+
+  .app-download-grid {
+    flex-direction: column;
+    align-items: center;
+
+  }
+}

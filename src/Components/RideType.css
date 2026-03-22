@@ -1,0 +1,236 @@
+/* Ride Type Section Wrapper */
+.ride-type {
+  /* padding: 6rem 0; */
+  padding: 2rem 0 3rem 0;
+  background-color: #FFFFFF;
+  /* Override dotted background */
+  position: relative;
+  z-index: 10;
+}
+
+.ride-type .container {
+  max-width: 1400px;
+  padding: 0 2rem;
+}
+
+.ride-type-header {
+  max-width: 900px;
+  margin: 0 auto 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* .ride-type-header .badge {
+  margin-bottom: 1rem;
+  border-radius: var(--radius-pill);
+} */
+/* Replace your .badge-blue with this */
+.ride-type-header.badge-blue {
+  display: inline-block;
+  position: relative;
+  /* Reduced size to look compact */
+  padding: 5px 25px;
+  color: #ffffff;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 0.95rem;
+  /* Chinna size but clear-a irukkum */
+  font-weight: 500;
+  text-decoration: none;
+  z-index: 1;
+  border: none;
+  background: none;
+  margin-bottom: 1.5rem;
+  /* Title-ku mela gap iruka */
+}
+
+/* Background shape for About badge */
+.ride-type-header.badge-blue::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #0b57d0;
+  border-radius: 8px;
+  /* Square edges with slight roundness like image */
+
+  /* Slant/Trapezoid effect */
+  transform: perspective(60px) rotateX(18deg);
+
+  /* The exact light blue border from image */
+  box-shadow: 0 0 0 3px #adc6ff;
+  z-index: -1;
+}
+
+/* Mobile responsive alignment */
+@media (max-width: 1024px) {
+  .about .badge-blue {
+    margin-left: auto;
+    margin-right: auto;
+    display: table;
+    /* Center alignment for skewed elements */
+  }
+}
+
+.ride-type-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* 4-Column Layout */
+.ride-type-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+/* Individual Card */
+.ride-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  /* Lighter shadow to make border pop */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  /* Clean visible border added */
+}
+
+.ride-card:hover {
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.08);
+  /* Refined hover shadow */
+  border-color: rgba(37, 99, 235, 0.2);
+  /* Subtle blue tint on hover */
+}
+
+/* Card Top: Image Area */
+.ride-card-top {
+  background-color: transparent;
+  padding: 1rem 1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 180px;
+  /* Reduced to save space */
+  overflow: hidden;
+}
+
+.ride-image {
+  width: 100%;
+  max-width: 220px;
+  max-height: 250px;
+  object-fit: contain;
+  object-position: bottom;
+  margin-bottom: 10px;
+  /* Hide blue line */
+  transition: none;
+}
+
+/* Card Bottom: Content Area */
+.ride-card-bottom {
+  background-color: #F0F7FF;
+  padding: 1rem 1.25rem;
+  /* Reduced from 2rem */
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  text-align: left;
+}
+
+.ride-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.35rem;
+  /* Tightened */
+  color: #0F172A;
+  font-weight: 700;
+  text-align: left;
+}
+
+.ride-description {
+  font-size: 0.95rem;
+  color: #475569;
+  margin-bottom: 0.75rem;
+  /* Tightened */
+  line-height: 1.4;
+  flex-grow: 1;
+  text-align: left;
+}
+
+/* Bullet Points */
+.ride-features {
+  list-style-type: none;
+  margin-bottom: 1.25rem;
+  /* Tightened */
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  /* Tightened gap */
+}
+
+.ride-features li {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  color: #1E293B;
+  font-weight: 500;
+}
+
+.dot-bullet {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #0F172A;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* Card Button */
+.btn-ride {
+  width: fit-content;
+  /* Small button as in screenshot */
+  min-width: 140px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: var(--radius-pill);
+  background-color: #2563EB;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btn-ride:hover {
+  background-color: #1D4ED8;
+  transform: translateX(5px);
+}
+
+/* Responsive Rules */
+@media (max-width: 1200px) {
+  .ride-type-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .ride-type {
+    padding: 4rem 0;
+  }
+
+  .ride-type-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .ride-type-subtitle {
+    font-size: 1.1rem;
+  }
+}

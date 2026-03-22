@@ -1,0 +1,281 @@
+.footer {
+  background-color: #ffffff;
+
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  width: 100%;
+}
+
+/* Top Decoration: Skyline */
+.footer-skyline-wrapper {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  height: 150px;
+
+  display: flex;
+  align-items: flex-end;
+
+}
+
+.footers {
+  background-color: #000000;
+}
+
+.footer-skyline-img {
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+  object-fit: contain;
+
+  object-position: bottom;
+}
+
+
+.footer-divider-tops {
+  height: 1px;
+  background-color: black;
+  width: 100%;
+}
+
+/* Main Footer Content */
+.footer-main {
+  padding: 5rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  /* Match image proportions */
+  gap: 3rem;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-start;
+  /* Ensure all children like the title align left */
+}
+
+.footer-logo-container {
+  height: 44px;
+  /* Matches header's cropping height */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  margin-left: -50px;
+  /* Ensures visual "V" starts in a straight line with text */
+}
+
+.footer-logo-img {
+  height: 42px;
+  width: auto;
+  display: block;
+  margin-top: -10px;
+  padding-left: 22px;
+  /* Centering the logo to crop the bottom line */
+}
+
+.footer-description {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 320px;
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.footer-contact-item svg {
+  color: #2563eb;
+  width: 20px;
+  height: 20px;
+}
+
+.footer-column h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  margin-top: 72px;
+  /* calc(logo-height 65px + gap approx 7px to align with transform text) */
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #2563eb;
+}
+
+.footer-social-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.footer-social-link:hover {
+  color: #2563eb;
+}
+
+.footer-social-link.linkedin svg {
+  color: #0077b5;
+}
+
+.footer-social-link.instagram svg {
+  color: #e4405f;
+}
+
+.social-links-stack {
+  display: flex !important;
+  flex-direction: column;
+  gap: 1.25rem !important;
+}
+
+.footer-social-link svg {
+  width: 20px;
+  height: 20px;
+}
+
+.location-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+  /* Ensure left alignment */
+}
+
+.india-flag {
+  width: 70px;
+  height: auto;
+  border-radius: 4px;
+  /* Added slight rounding like image */
+  background-color: #000000;
+  /* Add white background for visibility on black */
+  padding: 2px;
+  /* Small border offset */
+  display: block;
+  margin-left: -10px;
+}
+
+.footer-address {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 300px;
+  margin: 0;
+}
+
+/* Bottom Footer Section */
+.footer-bottom-wrapper {
+  position: relative;
+  /* background-color: #ffffff; */
+  background-color: #000000;
+  padding: 2.5rem 0;
+  border-top: none;
+  /* Removed solid line as per reference image */
+}
+
+/* Pattern removed as per request */
+.footer-bottom-pattern {
+  display: none;
+}
+
+.footer-dashed-line {
+  width: 58%;
+  height: 0.5px;
+  background-image:
+    linear-gradient(to right, #4b5563 10px, transparent 10px),
+    /* Light black (Slate 600) */
+    radial-gradient(circle, #4b5563 2px, transparent 2px);
+  /* Light black dot */
+  background-size: 24px 2px, 24px 12px;
+  background-position: 0 0, 16px 0;
+  background-repeat: repeat-x;
+  position: absolute;
+  bottom: 110px;
+  /* Precise wheel level alignment */
+  left: 23.5%;
+  z-index: 5;
+  opacity: 0.7;
+  /* Soften the look further */
+  border: none;
+}
+
+.footer-copyright {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+  position: relative;
+  z-index: 2;
+
+}
+
+/* Floating Taxi Car */
+.footer-car-container {
+  position: absolute;
+  bottom: 60px;
+  /* Moved down from 80px to avoid hiding phone number */
+  left: 5%;
+  width: 280px;
+  /* Increased for premium look matching image */
+  z-index: 10;
+  pointer-events: none;
+}
+
+.footer-car-img {
+  width: 100%;
+  height: auto;
+  filter: none;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .footer-main {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-main {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .footer-car-container {
+    display: block;
+    width: 120px;
+    bottom: 70px;
+    left: 0.5%;
+    right: auto;
+    z-index: 20;
+  }
+
+  .footer-skyline-wrapper {
+    height: 80px;
+  }
+}
