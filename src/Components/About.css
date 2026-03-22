@@ -1,0 +1,213 @@
+/* About Section Wrapper */
+.about {
+  padding: 6rem 0;
+
+  background-image: none !important;
+  /* Remove background dots */
+}
+
+.about .container {
+  max-width: 1400px;
+  padding: 0 2rem;
+  /* Matching Hero section's side gutter */
+}
+
+.about-container {
+  position: relative;
+  background-color: #0B1B3B;
+  /* Navy dark background */
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  padding: 2.5rem 2.5rem;
+  /* Balanced internal padding */
+  box-shadow: 0 20px 40px rgba(11, 27, 59, 0.15);
+  width: 100%;
+  /* Take full width of the parent 1400px container */
+  margin: 0 auto;
+}
+
+/* Subtle Grid Background Overlay (Left side only) */
+.about-grid-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  /* Only covers the left text area */
+  bottom: 0;
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  z-index: 1;
+}
+
+/* 2-Column Grid Layout */
+.about-content-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  /* gap: 4rem; */
+  gap: 2.5rem;
+  align-items: center;
+}
+
+/* Left Content Styles */
+.about-text-content {
+  max-width: 500px;
+}
+
+/* .badge-blue {
+  background-color: rgba(37, 99, 235, 0.2);
+  color: #60A5FA;
+ 
+  border: 1px solid rgba(37, 99, 235, 0.3);
+} */
+/* Replace your .badge-blue with this */
+.badge-blue {
+  display: inline-block;
+  position: relative;
+  /* Reduced size to look compact */
+  padding: 5px 25px;
+  color: #ffffff;
+  /* font-family: "Segoe UI", sans-serif; */
+  font-size: 0.95rem;
+  /* Chinna size but clear-a irukkum */
+  font-weight: 500;
+  text-decoration: none;
+  z-index: 1;
+  border: none;
+  background: none;
+  margin-bottom: 1.5rem;
+  /* Title-ku mela gap iruka */
+}
+
+/* Background shape for About badge */
+.badge-blue::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #0b57d0;
+  border-radius: 8px;
+  /* Square edges with slight roundness like image */
+
+  /* Slant/Trapezoid effect */
+  transform: perspective(60px) rotateX(18deg);
+
+  /* The exact light blue border from image */
+  box-shadow: 0 0 0 3px #adc6ff;
+  z-index: -1;
+}
+
+/* Mobile responsive alignment */
+@media (max-width: 1024px) {
+  .about .badge-blue {
+    margin-left: auto;
+    margin-right: auto;
+    display: table;
+    /* Center alignment for skewed elements */
+  }
+}
+
+.about-title {
+  color: #FFFFFF;
+  margin-bottom: 1.25rem;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  /* Reduced font size to make more compact */
+  line-height: 1.25;
+}
+
+.about-description {
+  color: #94A3B8;
+  /* Light grey text */
+  font-size: 1rem;
+  /* Reduced font size from 1.125rem */
+  line-height: 1.6;
+}
+
+/* Right Content / Visuals */
+.about-visuals-new {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-composite-img {
+  width: auto;
+  height: auto;
+  max-height: 350px;
+  /* Reduced from default to make it less dominant */
+  max-width: 100%;
+  border-radius: 0;
+  /* Background is now transparent, box-shadow/radius not needed */
+  background: transparent !important;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .about-container {
+    padding: 3rem 2rem;
+  }
+
+  .about-content-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .about-grid-bg {
+    width: 100%;
+    /* Full width on mobile/tablet since it's stacked */
+    height: 50%;
+    /* Only cover top text area */
+  }
+
+  .about-text-content {
+    max-width: 800px;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .badge {
+    margin: 0 auto 1.5rem;
+  }
+
+  .about-visuals-new {
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+    min-height: 400px;
+    /* Restored min-height for better mobile impact */
+  }
+}
+
+@media (max-width: 640px) {
+  .about-container {
+    padding: 2.5rem 1.5rem;
+    border-radius: 1.5rem;
+  }
+
+  .about-title {
+    font-size: 1.75rem;
+  }
+
+  .about-description {
+    font-size: 1rem;
+  }
+
+  .about-visuals-new {
+    min-height: auto;
+  }
+
+  .logo-card-content {
+    padding: 1rem 1.75rem;
+  }
+
+  .logo-text {
+    font-size: 1.25rem;
+  }
+}
